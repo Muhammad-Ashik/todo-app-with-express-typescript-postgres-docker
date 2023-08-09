@@ -27,3 +27,7 @@ services:
       - todo-postgres:/var/lib/postgresql/data
 volumes:
   todo-postgres:
+
+# dckr_pat_cQ87Gx8aP8dfd1LXny_ywxOvscY
+
+# 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
