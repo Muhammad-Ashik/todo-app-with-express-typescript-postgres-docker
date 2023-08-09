@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  todo:
+    restart: on-failure
+    build: .
+    depends_on:
+      - postgres
+    working_dir: /app
+    environment:
+      NODE_ENV: development
+    ports:
+      - "4000:4000"
+    command: yarn start
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      
+  postgres:
+    image: postgres:13
+    restart: on-failure
+    container_name: todo-postgres-database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dbpassword
+      POSTGRES_DB: todo
+    volumes:
+      - todo-postgres:/var/lib/postgresql/data
+volumes:
+  todo-postgres:
